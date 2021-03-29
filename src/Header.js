@@ -11,8 +11,12 @@ import AddRoundedIcon from '@material-ui/icons/AddRounded'
 import TextsmsRoundedIcon from '@material-ui/icons/TextsmsRounded'
 import NotificationsRoundedIcon from '@material-ui/icons/NotificationsRounded'
 import ArrowDropDownRoundedIcon from '@material-ui/icons/ArrowDropDownRounded'
+import {useStateValue} from "./StateProvider";
 
 function Header() {
+
+    const [{user}, dispatch] = useStateValue()
+
     return <div className="header">
         <div className="header__left">
             <img src="https://1000logos.net/wp-content/uploads/2016/11/Facebook-logo.png" alt=""/>
@@ -42,8 +46,8 @@ function Header() {
 
         <div className="header__right">
             <div className="header__info">
-                <Avatar />
-                <h4>Messi@10</h4>
+                <Avatar src={user.photoURL} />
+                <h4>{user.displayName}</h4>
             </div>
             <IconButton>
                 <AddRoundedIcon />
